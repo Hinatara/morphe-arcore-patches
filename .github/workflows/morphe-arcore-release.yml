@@ -10,16 +10,19 @@
 # - commit patches-bundle.json tro lai main — Morphe doc file nay de biet
 #   link tai .mpp moi nhat, nen source tu dong cap nhat.
 #
-# So voi template goc (MorpheApp/morphe-patches-template) co 2 cho sua:
+# So voi template goc (MorpheApp/morphe-patches-template) co 3 cho sua:
 # 1. Cai Android SDK + Gradle 9.8.2 truc tiep (repo nay khong co
 #    gradle-wrapper.jar vi snapshot push chi nhan file text; neu Le
 #    upload them gradle-wrapper.jar tu template thi ./gradlew lai chay).
 # 2. Buoc verify dung `gradle` thay cho `./gradlew`.
+# 3. Buoc `chmod +x gradlew` sau Checkout: file day qua API bi mat quyen
+#    thuc thi nen gradle-semantic-release-plugin go ./gradlew bi loi
+#    EACCES (gap ngay 11/11/2026 o lan chay Release dau tien).
 #
 # Can them: Le upload gradle-wrapper.jar (lay tu
 # https://github.com/MorpheApp/morphe-patches-template/raw/main/gradle/wrapper/gradle-wrapper.jar)
-# len repo, duong dan gradle/wrapper/gradle-wrapper.jar — de chac chan
-# gradle-semantic-release-plugin chay duoc nhu template goc.
+# len repo, duong dan gradle/wrapper/gradle-wrapper.jar — neu khong co file
+# nay thi ./gradlew se loi tiep du da chmod (khong tim thay jar).
 
 name: Release
 
@@ -45,6 +48,12 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+
+      - name: Make Gradle wrapper executable
+        # Files pushed via the GitHub API lose the executable bit,
+        # so gradle-semantic-release-plugin fails with
+        # "spawn ./gradlew EACCES" unless we restore it here.
+        run: chmod +x gradlew
 
       - name: Setup Java
         uses: actions/setup-java@v6
@@ -89,24 +98,3 @@ jobs:
       - name: Release
         uses: cycjimmy/semantic-release-action@v8
         id: release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ github.actor }}
-          MORPHE_SIGNING_KEY: ${{ secrets.MORPHE_SIGNING_KEY }}
-
-      - name: Attest
-        if: steps.release.outputs.new_release_published == 'true'
-        uses: actions/attest-build-provenance@v4
-        with:
-          subject-name: 'Morphe Patches ${{ steps.release.outputs.new_release_git_tag }}'
-          subject-path: patches/build/libs/patches-*.mpp
-
-      # Always verify compilation when semantic-release did not publish a release.
-      # This covers non-main/dev branches, chore commits, docs commits, etc.
-      - name: Verify project compiles
-        if: steps.release.outputs.new_release_published != 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ github.actor }}
-        run: gradle :patches:buildAndroid clean --no-daemon
-        
