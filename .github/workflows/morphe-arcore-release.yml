@@ -49,6 +49,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      # semantic-release stores channel metadata in Git notes. actions/checkout
+      # fetch-depth: 0 fetches branches and tags, but not refs/notes/*.
+      - name: Fetch semantic-release notes
+        run: |
+          git fetch origin '+refs/notes/*:refs/notes/*' || true
+          git for-each-ref refs/notes --format='%(refname) %(objectname)'
+
       - name: Make Gradle wrapper executable
         # Files pushed via the GitHub API lose the executable bit,
         # so gradle-semantic-release-plugin fails with
