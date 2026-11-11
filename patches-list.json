@@ -1,0 +1,33 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Force ARCore availability: SUPPORTED_INSTALLED (experimental)",
+      "description": "Experimental: force ArCoreApk.checkAvailability() to return SUPPORTED_INSTALLED. Fingerprint UNVERIFIED. Does NOT supply a device profile, so AR session creation may still fail.",
+      "default": false,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.ar.core",
+          "name": "Google Play Services for AR",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "1.57.2626402",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

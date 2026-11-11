@@ -46,6 +46,24 @@ After adding the source, select the available patch in Morphe Manager. Review th
 ## Included patch
 
 <!-- PATCHES_START -->
+> **[v1.0.0](https://github.com/Hinatara/morphe-arcore-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+<details open>
+<summary>📦 Google Play Services for AR&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**Package name:** `com.google.ar.core`
+
+**🎯 Supported versions:**
+
+| 1.57.2626402 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Force ARCore availability: SUPPORTED_INSTALLED (experimental)](#force-arcore-availability-supported-installed-experimental) | Experimental: force ArCoreApk.checkAvailability() to return SUPPORTED_INSTALLED. Fingerprint UNVERIFIED. Does NOT supply a device profile, so AR session creation may still fail. |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ### What the patch changes
