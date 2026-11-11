@@ -24,7 +24,7 @@ object Constants {
         name = "Google Play Services for AR",
         packageName = "com.google.ar.core",
         apkFileType = ApkFileType.APK,
-        appIconColor = 0xFF4285F4.toInt(),
+        appIconColor = 0x4285F4,
         targets = listOf(
             // NOTE (2026-11-11, v1.0.1): the target was experimental
             // (isExperimental = true) in v1.0.0. Morphe Manager 2.5.0
