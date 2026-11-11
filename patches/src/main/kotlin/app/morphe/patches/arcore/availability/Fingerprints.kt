@@ -5,39 +5,41 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
- * CANDIDATE fingerprint — UNVERIFIED against the real dex of
- * Google Play Services for AR 1.57.2626402.
+ * VERIFIED fingerprint — from the real dex of CardboardXR 1.0.0
+ * (com.brenpoly.cardboardxr, versionCode 10000, versionName 1.0.0),
+ * dumped with `dexdump -d` on 2026-11-12.
+ * Analysis files: ~/workspace/morphe-arcore/analysis/cardboardxr/
  *
- * Derived only from Google's public Java API docs:
- * - Class: com.google.ar.core.ArCoreApk
- * - Method: public ArCoreApk.Availability checkAvailability(Context applicationContext)
- * - Availability enum values include SUPPORTED_INSTALLED (203 in the C API),
- *   SUPPORTED_NOT_INSTALLED, SUPPORTED_APK_TOO_OLD, UNSUPPORTED_DEVICE_NOT_CAPABLE.
+ * Why this class and not ArCoreApk:
+ * - `ArCoreApk.checkAvailability(Context)` in this APK is a STUB: its
+ *   whole body is `throw new UnsupportedOperationException("Stub")`.
+ * - `ArCoreApk.getInstance()` returns `k.a()` — the singleton of
+ *   `com.google.ar.core.k`, the real implementation (FINAL class
+ *   extending ArCoreApk). Every virtual call to checkAvailability
+ *   dispatches to `k.checkAvailability`, which is what Unity's JNI
+ *   adapter calls (`ArCoreApkJniAdapter.checkAvailability` ->
+ *   `getInstance().checkAvailability(...)` -> `k.checkAvailability`).
+ * - `k.checkAvailability` (PUBLIC FINAL, 63 code units) is the real
+ *   method: monitor-enter, cached result in field `h`, calls worker
+ *   `k.h(Context, h)`, returns the cached Availability.
  *
- * DO NOT trust this fingerprint until FINGERPRINT_RESEARCH.md step 2 is done
- * in jadx on the real APK:
- * - Confirm definingClass / name / returnType / parameters / accessFlags.
- * - Replace the `filters` below with real instruction filters found in
- *   that method, in their real order. The string filter below is a
- *   placeholder guess, not a measured instruction.
- * - If checkAvailability() turns out to be a thin native wrapper, this
- *   fingerprint is weak by design — record that and stop, do not invent
- *   a different fingerprint to force a match.
+ * Filter: the string "request not running but result is null?" occurs
+ * exactly ONCE in the whole dex, inside this method (offset 0x0033).
+ * (The "ARCore-ArCoreApk" tag occurs 5 times — not used, not unique.)
  *
- * Docs used:
- * https://developers.google.com/ar/reference/java/com/google/ar/core/ArCoreApk
- * https://developers.google.com/ar/reference/c/group/ar-core-apk
+ * The old fingerprint (ArCoreApk.checkAvailability in the ARCore
+ * SERVICE apk) is deleted: that class does not exist in the service
+ * APK at all (verified 2026-11-11 by dexdump of ARCore 1.57.262640283),
+ * so no fingerprint can ever match there. See FINGERPRINT_RESEARCH.md.
  */
-object ArCoreApkCheckAvailabilityFingerprint : Fingerprint(
-    definingClass = "Lcom/google/ar/core/ArCoreApk;",
+object CardboardXrCheckAvailabilityFingerprint : Fingerprint(
+    definingClass = "Lcom/google/ar/core/k;",
     name = "checkAvailability",
-    accessFlags = listOf(AccessFlags.PUBLIC),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Lcom/google/ar/core/ArCoreApk\$Availability;",
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
-        // UNVERIFIED placeholder. Replace with real filters from jadx.
-        // Kept minimal on purpose: a wrong specific filter fails loudly
-        // at patch time instead of silently matching the wrong method.
-        string("checkAvailability")
+        // Unique in the whole dex (1 occurrence), in this method only.
+        string("request not running but result is null?")
     )
 )

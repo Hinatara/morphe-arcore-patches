@@ -6,38 +6,35 @@ import app.morphe.patcher.patch.Compatibility
 
 object Constants {
     /**
-     * Target: Google Play Services for AR (ARCore service APK).
+     * Target: CardboardXR 1.0.0 (com.brenpoly.cardboardxr).
      *
-     * Verified facts (11/11/2026):
-     * - Package: com.google.ar.core
-     * - Latest version seen on APKMirror: 1.57.2626402 (6/11/2026).
-     *   The arm-v7a variant has version code 262640013; ZTE nubia Neo 5G
-     *   (Unisoc T820) needs the arm64-v8a variant, NOT arm-v7a.
-     * - This is a system service signed by Google, not a normal user app.
-     *   Patching it changes its signature, so Play may overwrite it and
-     *   AR apps may refuse it. See README.md.
+     * Verified facts (2026-11-12, from the APK Lê sent):
+     * - Package: com.brenpoly.cardboardxr, versionCode 10000,
+     *   versionName 1.0.0, minSdk 29, targetSdk 36 (aapt2 dump badging).
+     * - Unity app; the ARCore Java client lives in its classes.dex:
+     *   `ArCoreApk` is a stub (throws UnsupportedOperationException),
+     *   the real implementation is `com.google.ar.core.k`, returned by
+     *   `ArCoreApk.getInstance()`. See Fingerprints.kt for the dex proof.
      *
-     * The target below is EXPERIMENTAL: no confirmed-working version exists,
-     * because no device profile exists for the ZTE Z2571N.
+     * The previous target (Google Play Services for AR, the service APK)
+     * is DROPPED: its dex contains no ArCoreApk class at all (verified
+     * 2026-11-11 on ARCore 1.57.262640283), so that patch could never
+     * match any fingerprint there.
+     *
+     * This target is NOT experimental: the fingerprint is verified
+     * against the real dex of this exact APK. The patch itself is still
+     * default-off and labelled experimental in its name/description,
+     * because forcing availability does NOT supply the missing Z2571N
+     * device profile — a working AR session is still unlikely.
      */
-    val COMPATIBILITY_ARCORE = Compatibility(
-        name = "Google Play Services for AR",
-        packageName = "com.google.ar.core",
+    val COMPATIBILITY_CARDBOARDXR = Compatibility(
+        name = "CardboardXR",
+        packageName = "com.brenpoly.cardboardxr",
         apkFileType = ApkFileType.APK,
-        appIconColor = 0x4285F4,
+        appIconColor = 0xFF4285F4.toInt(),
         targets = listOf(
-            // NOTE (2026-11-11, v1.0.1): the target was experimental
-            // (isExperimental = true) in v1.0.0. Morphe Manager 2.5.0
-            // showed the source as 0 patches — the experimental-only
-            // target is hidden when the pre-release/experimental
-            // toggles are off, and those toggles were not found in
-            // the 2.5.0 UI. The patch itself is STILL experimental
-            // and default-off (see ForceSupportedInstalledPatch.kt):
-            // it only runs if Lê turns it on explicitly. Only the
-            // target visibility flag was dropped, so the patch shows
-            // up in the list at all.
             AppTarget(
-                version = "1.57.2626402"
+                version = "1.0.0"
             )
         )
     )
