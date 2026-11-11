@@ -84,6 +84,14 @@ jobs:
           echo "/tmp/gradle-9.8.2/bin" >> "$GITHUB_PATH"
           gradle --version
 
+      - name: Restore Gradle wrapper JAR
+        run: |
+          mkdir -p gradle/wrapper
+          curl -fL --retry 3 \
+            -o gradle/wrapper/gradle-wrapper.jar \
+            https://github.com/MorpheApp/morphe-patches-template/raw/main/gradle/wrapper/gradle-wrapper.jar
+          test -s gradle/wrapper/gradle-wrapper.jar
+
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
@@ -98,3 +106,5 @@ jobs:
       - name: Release
         uses: cycjimmy/semantic-release-action@v8
         id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
