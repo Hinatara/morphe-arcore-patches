@@ -18,6 +18,24 @@ Settings → GitHub PAT first, or the source cannot be fetched.
 ## Patches
 
 <!-- PATCHES_START -->
+> **[v1.1.0](https://github.com/Hinatara/morphe-arcore-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+<details open>
+<summary>📦 CardboardXR&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**Package name:** `com.brenpoly.cardboardxr`
+
+**🎯 Supported versions:**
+
+| 1.0.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Force ARCore availability: SUPPORTED_INSTALLED (CardboardXR)](#force-arcore-availability-supported-installed-cardboardxr) | Experimental: force the real checkAvailability() in CardboardXR (com.google.ar.core.k) to return SUPPORTED_INSTALLED. Fingerprint VERIFIED from the CardboardXR 1.0.0 dex. Does NOT supply a device profile, so AR session creation may still fail. |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ## Notes

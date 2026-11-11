@@ -1,3 +1,13 @@
+## [1.1.0](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.2...v1.1.0) (2026-11-11)
+
+### ✨ New Features
+
+* retarget patch to CardboardXR with verified fingerprint ([2cf8efe](https://github.com/Hinatara/morphe-arcore-patches/commit/2cf8efe5f656c96e4301f575f94b2ba2c83e14fd))
+
+### 🐛 Bug Fixes
+
+* use RGB app icon color format ([7f253c5](https://github.com/Hinatara/morphe-arcore-patches/commit/7f253c5638a1269e85c55e6427412322a005b3cf))
+
 ## [1.0.2](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.1...v1.0.2) (2026-11-11)
 
 ### 🐛 Bug Fixes

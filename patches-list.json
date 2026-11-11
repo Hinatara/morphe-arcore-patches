@@ -1,16 +1,16 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "patches": [
     {
-      "name": "Force ARCore availability: SUPPORTED_INSTALLED (experimental)",
-      "description": "Experimental: force ArCoreApk.checkAvailability() to return SUPPORTED_INSTALLED. Fingerprint UNVERIFIED. Does NOT supply a device profile, so AR session creation may still fail.",
+      "name": "Force ARCore availability: SUPPORTED_INSTALLED (CardboardXR)",
+      "description": "Experimental: force the real checkAvailability() in CardboardXR (com.google.ar.core.k) to return SUPPORTED_INSTALLED. Fingerprint VERIFIED from the CardboardXR 1.0.0 dex. Does NOT supply a device profile, so AR session creation may still fail.",
       "default": false,
       "category": null,
       "compatiblePackages": [
         {
-          "packageName": "com.google.ar.core",
-          "name": "Google Play Services for AR",
+          "packageName": "com.brenpoly.cardboardxr",
+          "name": "CardboardXR",
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#4285F4",
@@ -18,7 +18,7 @@
           "formFactor": "MOBILE",
           "targets": [
             {
-              "version": "1.57.2626402",
+              "version": "1.0.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
