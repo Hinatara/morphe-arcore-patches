@@ -18,7 +18,7 @@ Settings → GitHub PAT first, or the source cannot be fetched.
 ## Patches
 
 <!-- PATCHES_START -->
-> **[v1.1.1](https://github.com/Hinatara/morphe-arcore-patches/releases/tag/v1.1.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+> **[v1.1.2](https://github.com/Hinatara/morphe-arcore-patches/releases/tag/v1.1.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
 <details open>
 <summary>📦 CardboardXR&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>

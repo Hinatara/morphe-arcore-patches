@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.1.1...v1.1.2) (2026-11-11)
+
+### 🐛 Bug Fixes
+
+* build patch instructions with the dexlib2 Builder API instead of inline smali ([2b3dce7](https://github.com/Hinatara/morphe-arcore-patches/commit/2b3dce77acfcdd47417e561a53f92817525c4364))
+
 ## [1.1.1](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.1.0...v1.1.1) (2026-11-11)
 
 ### 🐛 Bug Fixes
