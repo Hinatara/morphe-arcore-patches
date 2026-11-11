@@ -26,9 +26,18 @@ object Constants {
         apkFileType = ApkFileType.APK,
         appIconColor = 0xFF4285F4.toInt(),
         targets = listOf(
+            // NOTE (2026-11-11, v1.0.1): the target was experimental
+            // (isExperimental = true) in v1.0.0. Morphe Manager 2.5.0
+            // showed the source as 0 patches — the experimental-only
+            // target is hidden when the pre-release/experimental
+            // toggles are off, and those toggles were not found in
+            // the 2.5.0 UI. The patch itself is STILL experimental
+            // and default-off (see ForceSupportedInstalledPatch.kt):
+            // it only runs if Lê turns it on explicitly. Only the
+            // target visibility flag was dropped, so the patch shows
+            // up in the list at all.
             AppTarget(
-                version = "1.57.2626402",
-                isExperimental = true
+                version = "1.57.2626402"
             )
         )
     )
