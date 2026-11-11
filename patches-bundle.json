@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-11T16:57:48",
-  "description": "## [1.0.1](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.0...v1.0.1) (2026-11-11)\n\n### 🐛 Bug Fixes\n\n* correct release plugin list after removing backmerge ([81c15b5](https://github.com/Hinatara/morphe-arcore-patches/commit/81c15b55a1b9845210266ba1b60f8d0d834b4258))\n* skip backmerge to missing dev branch ([a945d8b](https://github.com/Hinatara/morphe-arcore-patches/commit/a945d8bd921e95bdb0dde21a2f677508061e036e))",
-  "download_url": "https://github.com/Hinatara/morphe-arcore-patches/releases/download/v1.0.1/patches-1.0.1.mpp",
+  "created_at": "2026-11-11T17:05:55",
+  "description": "## [1.0.2](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.1...v1.0.2) (2026-11-11)\n\n### 🐛 Bug Fixes\n\n* **ci:** fetch semantic-release git notes before release [skip ci] ([6e74ff1](https://github.com/Hinatara/morphe-arcore-patches/commit/6e74ff189d9d1e92cfe9cc650a8e5442854a8c8b))",
+  "download_url": "https://github.com/Hinatara/morphe-arcore-patches/releases/download/v1.0.2/patches-1.0.2.mpp",
   "signature_download_url": "",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }

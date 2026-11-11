@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.1...v1.0.2) (2026-11-11)
+
+### 🐛 Bug Fixes
+
+* **ci:** fetch semantic-release git notes before release [skip ci] ([6e74ff1](https://github.com/Hinatara/morphe-arcore-patches/commit/6e74ff189d9d1e92cfe9cc650a8e5442854a8c8b))
+
 ## [1.0.1](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.0...v1.0.1) (2026-11-11)
 
 ### 🐛 Bug Fixes
