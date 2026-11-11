@@ -31,7 +31,7 @@ object Constants {
         name = "CardboardXR",
         packageName = "com.brenpoly.cardboardxr",
         apkFileType = ApkFileType.APK,
-        appIconColor = 0xFF4285F4.toInt(),
+        appIconColor = 0x4285F4,
         targets = listOf(
             AppTarget(
                 version = "1.0.0"
