@@ -1,7 +1,7 @@
 package app.morphe.patches.arcore.availability
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.arcore.shared.Constants.COMPATIBILITY_ARCORE
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/arcore/ArCoreAvailability;"
@@ -28,9 +28,16 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/arcore/ArCoreAvailabi
  * Default = false, so Morphe Manager will NOT apply it unless Lê
  * turns it on explicitly in Expert mode. That is intentional:
  * an unverified patch must never be on by default.
+ *
+ * NOTE (2026-11-11, v1.0.2): v1.0.0/v1.0.1 used the old
+ * bytecodePatch() API, which patcher 2.3.0 deprecated in favour of
+ * patch() — and Morphe 2.5.0 listed the source as 0 patches. The
+ * current template uses patch() everywhere, so this patch now uses
+ * patch() too. The bytecode (fingerprint + injected instructions)
+ * is unchanged.
  */
 @Suppress("unused")
-val forceSupportedInstalledPatch = bytecodePatch(
+val forceSupportedInstalledPatch = patch(
     name = "Force ARCore availability: SUPPORTED_INSTALLED (experimental)",
     description = "Experimental: force ArCoreApk.checkAvailability() to return SUPPORTED_INSTALLED. Fingerprint UNVERIFIED. Does NOT supply a device profile, so AR session creation may still fail.",
     default = false
