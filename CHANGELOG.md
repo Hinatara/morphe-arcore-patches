@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.1.0...v1.1.1) (2026-11-11)
+
+### 🐛 Bug Fixes
+
+* rebuild bundle from current sources ([9d76ce6](https://github.com/Hinatara/morphe-arcore-patches/commit/9d76ce63bf89eda06e40b5bdfb89adf322866543))
+
 ## [1.1.0](https://github.com/Hinatara/morphe-arcore-patches/compare/v1.0.2...v1.1.0) (2026-11-11)
 
 ### ✨ New Features
