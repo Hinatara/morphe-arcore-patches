@@ -24,7 +24,7 @@ object Constants {
         name = "Google Play Services for AR",
         packageName = "com.google.ar.core",
         apkFileType = ApkFileType.APK,
-        appIconColor = 0xFF4285F4,
+        appIconColor = 0xFF4285F4.toInt(),
         targets = listOf(
             AppTarget(
                 version = "1.57.2626402",

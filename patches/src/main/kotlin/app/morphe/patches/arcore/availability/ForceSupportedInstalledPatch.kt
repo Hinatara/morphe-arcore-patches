@@ -43,8 +43,9 @@ val forceSupportedInstalledPatch = bytecodePatch(
         ArCoreApkCheckAvailabilityFingerprint.method.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS;->supportedInstalled()Lcom/google/ar/core/ArCoreApk\$Availability;
+                invoke-static {}, $EXTENSION_CLASS;->supportedInstalled()Ljava/lang/Object;
                 move-result-object v0
+                check-cast v0, Lcom/google/ar/core/ArCoreApk${'$'}Availability;
                 return-object v0
             """
         )
