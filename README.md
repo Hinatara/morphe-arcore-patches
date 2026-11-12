@@ -62,3 +62,4 @@ Settings → GitHub PAT first, or the source cannot be fetched.
   Actions injects `GITHUB_TOKEN`).
 - Local build needs JDK 21 + Android SDK 36 + a GitHub token for the
   Morphe package registry (the registry returns 401 without one).
+##Currently under testing, please do not download as it is unstable. 
